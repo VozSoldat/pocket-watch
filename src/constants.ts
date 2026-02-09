@@ -1,0 +1,1 @@
+export const storyCardName = "Pocket Watch";

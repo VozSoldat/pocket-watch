@@ -1,3 +1,4 @@
+import { StoryCardRepository } from './core/system/story-card-repository.js';
 import { getTimeString, getTimeOfDay } from './time-system.js';
 
 const PocketWatch = {
@@ -22,7 +23,8 @@ const PocketWatch = {
         const timeInjection = `[ Current Time: ${timeStr} (${period}) ]\n`;
 
         return { text: timeInjection + text };
-    }
+    },
+    repository: StoryCardRepository
 };
 
 (globalThis as any).PocketWatch = PocketWatch;
