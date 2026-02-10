@@ -2,7 +2,7 @@
 export abstract class StoryCardRepository {
 
     /**
-     * Buat kartu baru.
+     * Create a new card.
      * @param card 
      */
     public static create(card: StoryCard): void {
@@ -10,7 +10,7 @@ export abstract class StoryCardRepository {
         addStoryCard(card.keys, card.entry, card.type, card.title);
     }
     /**
-     * Menyimpan atau memperbarui kartu.
+     * Save an existing card's changes or create a new card.
      */
     public static save(card: StoryCard): void {
         if (card.id === undefined) {
@@ -22,7 +22,7 @@ export abstract class StoryCardRepository {
 
 
     /**
-     * Mencari kartu berdasarkan title buatan kita.
+     * Find cart by title.
      */
     public static findByTitle(title: string): StoryCard | null {
         // Kita iterasi worldInfo bawaan AID
@@ -38,6 +38,11 @@ export abstract class StoryCardRepository {
         };
     }
 
+    /**
+     * Remove card by title.
+     * @param title
+     * @returns title
+     */
     public static removeByTitle(title: string): boolean {
         const rawCard = this.findByTitle(title);
         if (!rawCard) return false;

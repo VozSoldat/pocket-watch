@@ -8,11 +8,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild src/index.ts --bundle --format=iife --outfile=dist/bundle.js"
+    "bundle": "esbuild src/index.ts --bundle --format=iife --outfile=dist/bundle.js",
+    "make": "tsx src/common/proper-converter.ts",
+    "build": "npm run bundle && npm run make"
   },
   "devDependencies": {
     "@types/node": "^25.2.2",
     "esbuild": "^0.27.3",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }

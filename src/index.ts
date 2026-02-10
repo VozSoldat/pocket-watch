@@ -2,6 +2,10 @@ import { inputModifier } from './core/modifiers/input-modifier.js';
 import { StoryCardRepository } from './core/system/story-card-repository.js';
 import { getTimeString, getTimeOfDay } from './time-system.js';
 
+/**
+ * @namespace PocketWatch
+ * @description This is the main entry point for PocketWatch.
+ */
 const PocketWatch = {
     inputModifier: (text: string) => inputModifier(text),
 
