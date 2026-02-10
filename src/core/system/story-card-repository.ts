@@ -2,13 +2,24 @@
 export abstract class StoryCardRepository {
 
     /**
-     * Menyimpan atau memperbarui kartu.
-     * Menggunakan Polymorphism untuk menyimpan data apa pun.
+     * Buat kartu baru.
+     * @param card 
      */
-    public static save(card: StoryCard): void {
+    public static create(card: StoryCard): void {
         // addWorldInfo(keys, entry, internalId)
         addStoryCard(card.keys, card.entry, card.type, card.title);
     }
+    /**
+     * Menyimpan atau memperbarui kartu.
+     */
+    public static save(card: StoryCard): void {
+        if (card.id === undefined) {
+            this.create(card);
+        } else {
+            updateStoryCard(card.id, card.keys, card.entry, card.type, card.title);
+        }
+    }
+
 
     /**
      * Mencari kartu berdasarkan title buatan kita.
@@ -17,7 +28,6 @@ export abstract class StoryCardRepository {
         // Kita iterasi worldInfo bawaan AID
         const rawCard = storyCards.find(c => (c as any).title === title);
 
-        // Catatan: Di beberapa versi AID, internal ID dipetakan ke 'externalId'
         if (!rawCard) return null;
 
         return {

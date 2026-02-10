@@ -1,18 +1,9 @@
+import { inputModifier } from './core/modifiers/input-modifier.js';
 import { StoryCardRepository } from './core/system/story-card-repository.js';
 import { getTimeString, getTimeOfDay } from './time-system.js';
 
 const PocketWatch = {
-    inputModifier: (text: string) => {
-        // 1. Initialize time if it doesn't exist
-        if (typeof state.totalMinutes === 'undefined') {
-            state.totalMinutes = 480; // Start at 8:00 AM
-        }
-
-        // 2. Advance time per turn (e.g., 10 minutes per action)
-        state.totalMinutes += 10;
-
-        return { text };
-    },
+    inputModifier: (text: string) => inputModifier(text),
 
     contextModifier: (text: string) => {
         const timeStr = getTimeString(state.totalMinutes);
